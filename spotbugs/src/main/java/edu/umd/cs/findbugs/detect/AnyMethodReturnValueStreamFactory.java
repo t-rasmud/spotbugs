@@ -29,6 +29,8 @@ import edu.umd.cs.findbugs.ba.Location;
 import edu.umd.cs.findbugs.ba.ObjectTypeFactory;
 import edu.umd.cs.findbugs.ba.RepositoryLookupFailureCallback;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 /**
  * Factory for stream objects of a particular base class type returned by any
  * method. This factory helps us keep track of streams returned by methods; we
@@ -52,7 +54,7 @@ public class AnyMethodReturnValueStreamFactory implements StreamFactory {
     }
 
     @Override
-    public Stream createStream(Location location, ObjectType type, ConstantPoolGen cpg,
+    public @NonNull Stream createStream(Location location, ObjectType type, ConstantPoolGen cpg,
             RepositoryLookupFailureCallback lookupFailureCallback) {
 
         Instruction ins = location.getHandle().getInstruction();

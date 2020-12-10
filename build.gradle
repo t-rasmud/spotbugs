@@ -3,6 +3,13 @@ plugins {
   id "com.diffplug.spotless" version "5.8.2"
   id "org.gradle.crypto.checksum" version "1.2.0"
   id "com.github.spotbugs" version "4.6.0"
+  // Checker Framework pluggable type-checking
+  id 'org.checkerframework' version '0.5.13'
+}
+checkerFramework {
+  checkers = [
+          'org.checkerframework.checker.nullness.NullnessChecker'
+  ]
 }
 
 version = '4.2.1-SNAPSHOT'
@@ -108,3 +115,4 @@ createReleaseBody.configure {
 }
 
 apply from: "$rootDir/gradle/sonar.gradle"
+apply plugin: 'org.checkerframework'
